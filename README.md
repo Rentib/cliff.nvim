@@ -1,7 +1,10 @@
 # cliff.nvim
 
-Plugin that moves the cursor up/down until it almost falls off the cliff.
-Idk I can't write READMEs.
+Plugin that moves the cursor up/down until it almost falls off the cliff. The
+principle is very simple. If the cursor is positioned at position `(row,
+column)` then after calling `cliff.go_down` or `cliff.go_up` the cursor will
+move to the furthest row such that every line in between either is of length
+larger than `column` or every line is smaller than `column`.
 
 ## Installation
 
