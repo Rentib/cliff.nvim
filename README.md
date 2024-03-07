@@ -23,6 +23,9 @@ Install using lazy or something.
     vim.keymap.set('o', "<c-j>", cliff.go_down, opts)
     vim.keymap.set('o', "<c-k>", cliff.go_up,   opts)
 
+## Demo
+![demo](./.github/images/demo.gif)
+
 ## Similar plugins
 
 - [vim-edgemotion](https://github.com/haya14busa/vim-edgemotion)
