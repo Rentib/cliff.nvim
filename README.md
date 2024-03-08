@@ -8,11 +8,7 @@ larger than `column` or every line is smaller than `column`.
 
 ## Installation
 
-Install using lazy or something.
-
-```lua
-{ "Rentib/cliff.nvim", event = "VeryLazy" }
-```
+Install "Rentib/cliff.nvim" using your preferred plugin manager
 
 ## Example configuration
 
@@ -25,6 +21,19 @@ vim.keymap.set('v', "<c-j>", cliff.go_down, opts)
 vim.keymap.set('v', "<c-k>", cliff.go_up,   opts)
 vim.keymap.set('o', "<c-j>", cliff.go_down, opts)
 vim.keymap.set('o', "<c-k>", cliff.go_up,   opts)
+```
+
+## [Lazy](https://github.com/folke/lazy.nvim) loading support
+
+```lua
+{
+  "Rentib/cliff.nvim",
+  event = "VeryLazy",
+  keys = {
+    { "<c-j>", mode = { "n", "o", "v" }, function() vim.cmd("norm " .. require("cliff").go_down()) end },
+    { "<c-k>", mode = { "n", "o", "v" }, function() vim.cmd("norm " .. require("cliff").go_up()) end },
+  }
+}
 ```
 
 ## Demo
