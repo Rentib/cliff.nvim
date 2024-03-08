@@ -1,4 +1,6 @@
 local move = function(key)
+    -- NOTE: use norm command because nvim_win_set_cursor doesnt support virtual edit
+
     local cursor = vim.api.nvim_win_get_cursor(0)
     local row, col = cursor[1], cursor[2]
 
@@ -18,10 +20,10 @@ local move = function(key)
     end
 
     if cnt ~= 0 then
-        return cnt .. key
+        vim.cmd("norm " .. cnt .. key)
+        return
     end
 
-    cnt = 0
     while lnum >= first_lnum and lnum <= last_lnum + 1 do
         cnt = cnt + 1
         if #vim.fn.getline(lnum) > col then
@@ -30,13 +32,15 @@ local move = function(key)
         lnum = lnum + diff
     end
 
-    return cnt .. key
+    vim.cmd("norm " .. cnt .. key)
 end
 
 local M = {}
 
-function M.go_up() return move('k') end
+function M.go_up() move('k') end
 
-function M.go_down() return move('j') end
+function M.go_down() move('j') end
+
+function M.setup() end -- lazy might scream otherwise
 
 return M
